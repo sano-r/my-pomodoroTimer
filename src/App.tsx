@@ -1,5 +1,7 @@
 import { useState, useEffect, ChangeEvent } from 'react';
-import { Button } from './components/Button';
+import { Link, Route, Routes } from 'react-router';
+import { Settings } from './components/Settings';
+import { Menu } from './components/Menu';
 
 export function App(){
   const [time, setTime] = useState(1500); // 25 minutes in seconds
@@ -52,28 +54,26 @@ export function App(){
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold mb-4">{isBreak ? 'Break Time' : 'Work Time'}</h1>
-      <div className="text-6xl font-mono mb-8">{formatTime(time)}</div>
-      <div className="flex space-x-4">
-        <Button variant='blue' onClick={toggleTimer}>
-          {isActive ? 'Pause': 'Start'}
-        </Button>
-        <Button variant="red" onClick={resetTimer}>
-          Reset
-        </Button>
+    
+      <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <nav className="mb-4">
+          <Link to="/" className="mr-4">Home</Link>
+          <Link to="/settings">Settings</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={
+            <>
+              <h1 className="text-4xl font-bold mb-4">{isBreak ? 'Break Time' : 'Work Time'}</h1>
+              <div className="text-6xl font-mono mb-8">{formatTime(time)}</div>
+              <Menu isActive={isActive} toggleTimer={toggleTimer} resetTimer={resetTimer} toggleSettings={() => {}} />
+            </>
+          } />
+          <Route path="/settings" element={
+            <Settings workTime={workTime} breakTime={breakTime} onWorkTimeChange={handleWorkTimeChange} onBreakTimeChange={handleBreakTimeChange} />
+          } />
+        </Routes>
       </div>
-      <div className='flex space-x-4'>
-        <div>
-          <label className='block mb-2'>Work Time (minutes): </label>
-          <input type="number" className='border p-2' value={workTime/60} onChange={handleWorkTimeChange}/>
-        </div>
-        <div>
-          <label className='block mb-2'>Break Time (minutes): </label>
-          <input type="number" className='border p-2' value={breakTime/60} onChange={handleBreakTimeChange}/>
-        </div>
-      </div>
-    </div>
+    
   );
 };
 
