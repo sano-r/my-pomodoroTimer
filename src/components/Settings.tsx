@@ -1,4 +1,4 @@
-﻿import { ChangeEvent } from 'react';
+﻿import { ChangeEvent } from "react";
 
 interface SettingsProps {
   workTime: number;
@@ -7,16 +7,35 @@ interface SettingsProps {
   onBreakTimeChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function Settings({ workTime, breakTime, onWorkTimeChange, onBreakTimeChange }: SettingsProps) {
+export function Settings({
+  workTime,
+  breakTime,
+  onWorkTimeChange,
+  onBreakTimeChange,
+}: SettingsProps) {
   return (
-    <div className='flex space-x-4 mt-4'>
+    <div className="flex space-x-4 mt-4">
       <div>
-        <label className='block mb-2'>Work Time (minutes): </label>
-        <input type="number" className='border p-2' value={workTime / 60} onChange={onWorkTimeChange} />
+        <label className="block mb-2">
+          Work Time (minutes):
+          <input
+            type="number"
+            className="border p-2"
+            value={workTime / 60}
+            onChange={onWorkTimeChange}
+          />
+        </label>
       </div>
       <div>
-        <label className='block mb-2'>Break Time (minutes): </label>
-        <input type="number" className='border p-2' value={breakTime / 60} onChange={onBreakTimeChange} />
+        <label className="block mb-2">
+          Break Time (minutes):
+          <input
+            type="number"
+            className="border p-2"
+            value={breakTime / 60}
+            onChange={onBreakTimeChange}
+          />
+        </label>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-﻿import { Button } from './Button';
+﻿import { Button } from "./Button";
 
 interface MenuProps {
   isActive: boolean;
@@ -7,11 +7,16 @@ interface MenuProps {
   toggleSettings: () => void;
 }
 
-export function Menu({ isActive, toggleTimer, resetTimer, toggleSettings }: MenuProps) {
+export function Menu({
+  isActive,
+  toggleTimer,
+  resetTimer,
+  toggleSettings,
+}: MenuProps) {
   return (
     <div className="flex space-x-4">
-      <Button variant='blue' onClick={toggleTimer}>
-        {isActive ? 'Pause' : 'Start'}
+      <Button variant="blue" onClick={toggleTimer}>
+        {isActive ? "Pause" : "Start"}
       </Button>
       <Button variant="red" onClick={resetTimer}>
         Reset
