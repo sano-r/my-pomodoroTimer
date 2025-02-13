@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Button } from './components/Button';
 
 export function App(){
   const [time, setTime] = useState(1500); // 25 minutes in seconds
@@ -41,18 +42,12 @@ export function App(){
       <h1 className="text-4xl font-bold mb-4">{isBreak ? 'Break Time' : 'Work Time'}</h1>
       <div className="text-6xl font-mono mb-8">{formatTime(time)}</div>
       <div className="flex space-x-4">
-        <button
-          onClick={toggleTimer}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
-        >
-          {isActive ? 'Pause' : 'Start'}
-        </button>
-        <button
-          onClick={resetTimer}
-          className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-700"
-        >
+        <Button variant='blue' onClick={toggleTimer}>
+          {isActive ? 'Pause': 'Start'}
+        </Button>
+        <Button variant="red" onClick={resetTimer}>
           Reset
-        </button>
+        </Button>
       </div>
     </div>
   );
