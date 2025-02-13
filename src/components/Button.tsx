@@ -6,9 +6,9 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 };
 
 const buttonStyle = {
-    "green" : "bg-green-500 text-white hover:bg-green-700",
-    "blue" : "bg-blue-500 text-white hover:bg-blue-700",
-    "red" : "bg-red-500 text-white hover:bg-red-700",
+    "green" : "bg-green-500 text-white hover:bg-green-700 transition-colors duration-300",
+    "blue" : "bg-blue-500 text-white hover:bg-blue-700 transition-colors duration-300",
+    "red" : "bg-red-500 text-white hover:bg-red-700 transition-colors duration-300",
     "red-gradation" : "bg-gradation-to-r from-red-300 to-red-600 text-white hover:from-red-600 hover:to-red-300",
 }
 
