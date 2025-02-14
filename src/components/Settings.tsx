@@ -14,7 +14,7 @@ export function Settings({
   onBreakTimeChange,
 }: SettingsProps) {
   return (
-    <div className="flex space-x-4 mt-4">
+    <div className="flex flex-col space-x-4 mt-4">
       <div>
         <label className="block mb-2">
           Work Time (minutes):

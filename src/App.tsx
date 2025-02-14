@@ -78,7 +78,6 @@ export function App() {
                 isActive={isActive}
                 toggleTimer={toggleTimer}
                 resetTimer={resetTimer}
-                toggleSettings={() => {}}
               />
             </>
           }
