@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Link, Route, Routes } from "react-router";
-import { Settings } from "./components/Settings";
-import { Menu } from "./components/Menu";
+import { Settings } from "./features/Settings";
+import { Menu } from "./features/Menu";
 import { SettingIcon } from "./components/SettingIcon";
 import { HomeIcon } from "./components/HomeIcon";
 
