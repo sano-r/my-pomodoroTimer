@@ -1,9 +1,8 @@
 import { useState, useEffect, ChangeEvent } from "react";
-import { Link, Route, Routes } from "react-router";
+import { Route, Routes } from "react-router";
 import { Settings } from "./features/Settings";
 import { Menu } from "./features/Menu";
-import { SettingIcon } from "./components/SettingIcon";
-import { HomeIcon } from "./components/HomeIcon";
+import { Header } from "./features/Header";
 
 export function App() {
   const [time, setTime] = useState(1500); // 25 minutes in seconds
@@ -56,44 +55,41 @@ export function App() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <nav className="mb-4 flex space-x-4">
-        <Link to="/" className="mr-4">
-          <HomeIcon size={8} color="gray" />
-        </Link>
-        <Link to="/settings">
-          <SettingIcon color="gray" />
-        </Link>
-      </nav>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <h1 className="text-4xl font-bold mb-4">
-                {isBreak ? "Break Time" : "Work Time"}
-              </h1>
-              <div className="text-6xl font-mono mb-8">{formatTime(time)}</div>
-              <Menu
-                isActive={isActive}
-                toggleTimer={toggleTimer}
-                resetTimer={resetTimer}
+    <div className="h-screen">
+      <Header />
+      <div className="flex flex-col items-center justify-center bg-gray-100 h-screen">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <h1 className="text-4xl font-bold mb-4">
+                  {isBreak ? "Break Time" : "Work Time"}
+                </h1>
+                <div className="text-6xl font-mono mb-8">
+                  {formatTime(time)}
+                </div>
+                <Menu
+                  isActive={isActive}
+                  toggleTimer={toggleTimer}
+                  resetTimer={resetTimer}
+                />
+              </>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <Settings
+                workTime={workTime}
+                breakTime={breakTime}
+                onWorkTimeChange={handleWorkTimeChange}
+                onBreakTimeChange={handleBreakTimeChange}
               />
-            </>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <Settings
-              workTime={workTime}
-              breakTime={breakTime}
-              onWorkTimeChange={handleWorkTimeChange}
-              onBreakTimeChange={handleBreakTimeChange}
-            />
-          }
-        />
-      </Routes>
+            }
+          />
+        </Routes>
+      </div>
     </div>
   );
 }
